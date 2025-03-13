@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebRTC Peer Visualizer</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="header">
+      <h1>WebRTC Peer Visualizer</h1>
+      <div id="connection-status">Server Status: <span class="status-badge status-connecting">Conectando...</span></div>
+    </div>
+    <div class="container">
+      <div id="graph-container">
+        <svg id="graph-svg">
+          <g id="links"></g>
+          <g id="nodes"></g>
+        </svg>
+        <div id="context-menu" class="context-menu" style="display: none;"></div>
+      </div>
+      <div id="info-container">
+        <div id="peer-details">
+          <h2 id="info-title">Informações da Rede</h2>
+
+          <div class="section">
+            <h3 class="section-title">Visão Geral</h3>
+            <div id="general-stats">
+              <p>ID Local: <span id="my-id">Carregando...</span></p>
+              <p>Total de Conexões: <span id="connection-count">0</span></p>
+              <p>Total de Canais de Dados: <span id="channel-count">0</span></p>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3 class="section-title">Peers Conectados</h3>
+            <ul id="peer-list" class="peer-list">
+              <li class="peer-item">Carregando peers...</li>
+            </ul>
+          </div>
+
+          <div class="section" id="selected-peer-section" style="display: none;">
+            <h3 class="section-title">Peer Selecionado</h3>
+            <div id="selected-peer-info">
+              <p>ID: <span id="selected-peer-id"></span></p>
+              <p>Estado da Conexão: <span id="selected-peer-state"></span></p>
+              <p>Estado do ICE: <span id="selected-peer-ice-state"></span></p>
+            </div>
+
+            <h4>Canais de Dados</h4>
+            <ul id="selected-peer-channels" class="channel-list">
+            </ul>
+
+            <div class="data-form">
+              <select id="channel-select">
+                <option value="chat">chat</option>
+                <option value="signal">signal</option>
+              </select>
+              <input type="text" id="message-input" placeholder="Mensagem para enviar">
+              <button id="send-button">Enviar</button>
+            </div>
+          </div>
+
+          <div class="section">
+            <h3 class="section-title">Logs de Comunicação</h3>
+            <div id="communication-logs" class="logs"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>
